@@ -3,569 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Burger Express - Fast Food Menu</title>
+    <title>Burger Haven - Fast Food Menu</title>
+    <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      :root {
-        --primary: #ff6b00;
-        --secondary: #ffc107;
-        --dark: #333;
-        --light: #f8f9fa;
-        --gray: #6c757d;
-      }
-
-      body {
-        background-color: #f5f5f5;
-        color: var(--dark);
-        line-height: 1.6;
-      }
-
-      header {
-        background-color: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-      }
-
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .logo i {
-        color: var(--primary);
-        font-size: 28px;
-      }
-
-      .logo h1 {
-        font-size: 24px;
-        color: var(--dark);
-      }
-
-      .logo span {
-        color: var(--primary);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 25px;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--dark);
-        font-weight: 500;
-        transition: color 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      .nav-icons {
-        display: flex;
-        gap: 15px;
-      }
-
-      .nav-icons i {
-        font-size: 20px;
-        color: var(--dark);
-        cursor: pointer;
-        transition: color 0.3s;
-      }
-
-      .nav-icons i:hover {
-        color: var(--primary);
-      }
-
-      .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80");
-        background-size: cover;
-        background-position: center;
-        color: white;
-        padding: 80px 0;
-        text-align: center;
-      }
-
-      .hero h2 {
-        font-size: 48px;
-        margin-bottom: 20px;
-      }
-
-      .hero p {
-        font-size: 20px;
-        max-width: 700px;
-        margin: 0 auto 30px;
-      }
-
-      .btn {
-        display: inline-block;
-        background-color: var(--primary);
-        color: white;
-        padding: 12px 30px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background-color: #e55a00;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .categories {
-        padding: 60px 0;
-        background-color: white;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-
-      .section-title h2 {
-        font-size: 36px;
-        color: var(--dark);
-        margin-bottom: 10px;
-      }
-
-      .section-title p {
-        color: var(--gray);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .category-tabs {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
-      }
-
-      .category-tab {
-        padding: 10px 25px;
-        background-color: var(--light);
-        border-radius: 30px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-weight: 500;
-      }
-
-      .category-tab.active {
-        background-color: var(--primary);
-        color: white;
-      }
-
-      .category-tab:hover:not(.active) {
-        background-color: #e9ecef;
-      }
-
-      .menu-items {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .menu-item {
-        background-color: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s;
-      }
-
-      .menu-item:hover {
-        transform: translateY(-10px);
-      }
-
-      .item-image {
-        height: 200px;
-        overflow: hidden;
-      }
-
-      .item-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-
-      .menu-item:hover .item-image img {
-        transform: scale(1.1);
-      }
-
-      .item-info {
-        padding: 20px;
-      }
-
-      .item-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-
-      .item-title {
-        font-size: 20px;
-        font-weight: 600;
-      }
-
-      .item-price {
-        color: var(--primary);
-        font-weight: 700;
-        font-size: 18px;
-      }
-
-      .item-description {
-        color: var(--gray);
-        margin-bottom: 15px;
-        font-size: 14px;
-      }
-
-      .item-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .rating {
-        color: var(--secondary);
-      }
-
-      .add-to-cart {
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .add-to-cart:hover {
-        background-color: #e55a00;
-        transform: scale(1.1);
-      }
-
-      .cart-modal {
-        position: fixed;
-        top: 0;
-        right: -400px;
-        width: 350px;
-        height: 100vh;
-        background-color: white;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s;
-        z-index: 1000;
-        padding: 20px;
-        overflow-y: auto;
-      }
-
-      .cart-modal.active {
-        right: 0;
-      }
-
-      .cart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #eee;
-      }
-
-      .cart-title {
-        font-size: 22px;
-        font-weight: 600;
-      }
-
-      .close-cart {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        color: var(--gray);
-      }
-
-      .cart-items {
-        margin-bottom: 20px;
-      }
-
-      .cart-item {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #eee;
-      }
-
-      .cart-item-image {
-        width: 80px;
-        height: 80px;
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
-      .cart-item-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .cart-item-details {
-        flex: 1;
-      }
-
-      .cart-item-name {
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .cart-item-price {
-        color: var(--primary);
-        font-weight: 600;
-      }
-
-      .cart-item-quantity {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 8px;
-      }
-
-      .quantity-btn {
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: #f1f1f1;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-
-      .cart-total {
-        display: flex;
-        justify-content: space-between;
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        padding-top: 15px;
-        border-top: 1px solid #eee;
-      }
-
-      .checkout-btn {
-        width: 100%;
-        padding: 15px;
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .checkout-btn:hover {
-        background-color: #e55a00;
-      }
-
-      .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        display: none;
-      }
-
-      .overlay.active {
-        display: block;
-      }
-
-      footer {
-        background-color: var(--dark);
-        color: white;
-        padding: 50px 0 20px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-bottom: 40px;
-      }
-
-      .footer-column h3 {
-        font-size: 20px;
-        margin-bottom: 20px;
-        position: relative;
-        padding-bottom: 10px;
-      }
-
-      .footer-column h3::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 2px;
-        background-color: var(--primary);
-      }
-
-      .footer-links {
-        list-style: none;
-      }
-
-      .footer-links li {
-        margin-bottom: 10px;
-      }
-
-      .footer-links a {
-        color: #bbb;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .footer-links a:hover {
-        color: var(--primary);
-      }
-
-      .social-icons {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-      }
-
-      .social-icons a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        color: white;
-        transition: all 0.3s;
-      }
-
-      .social-icons a:hover {
-        background-color: var(--primary);
-        transform: translateY(-5px);
-      }
-
-      .copyright {
-        text-align: center;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        color: #bbb;
-        font-size: 14px;
-      }
-
-      @media (max-width: 768px) {
-        .navbar {
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .nav-links {
-          gap: 15px;
-        }
-
-        .hero h2 {
-          font-size: 36px;
-        }
-
-        .hero p {
-          font-size: 18px;
-        }
-
-        .cart-modal {
-          width: 300px;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .category-tabs {
-          gap: 10px;
-        }
-
-        .category-tab {
-          padding: 8px 15px;
-          font-size: 14px;
-        }
-
-        .menu-items {
-          grid-template-columns: 1fr;
-        }
-
-        .cart-modal {
-          width: 100%;
-          right: -100%;
-        }
-      }
-    </style>
   </head>
   <body>
-    <!-- Header -->
+    <!-- Header Section -->
     <header>
       <div class="container">
-        <div class="navbar">
+        <div class="header-content">
           <div class="logo">
             <i class="fas fa-hamburger"></i>
-            <h1>Burger <span>Express</span></h1>
+            <h1>Burger Haven</h1>
           </div>
-          <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Menu</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-          </div>
-          <div class="nav-icons">
-            <i class="fas fa-search"></i>
-            <i class="fas fa-user"></i>
-            <i class="fas fa-shopping-cart" id="cart-icon"></i>
-          </div>
+          <nav>
+            <ul>
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#burgers">Burgers</a></li>
+              <li><a href="#sides">Sides</a></li>
+              <li><a href="#drinks">Drinks</a></li>
+              <li><a href="#desserts">Desserts</a></li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>
@@ -573,381 +35,301 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <h2>Delicious Fast Food Delivered Fast</h2>
+        <h2>Delicious Fast Food Made Fresh</h2>
         <p>
-          Enjoy our mouth-watering burgers, crispy fries, and refreshing drinks
-          made with the freshest ingredients.
+          Discover our mouth-watering selection of burgers, sides, and desserts.
+          Quality ingredients, amazing taste!
         </p>
-        <a href="#" class="btn">Order Now</a>
       </div>
     </section>
 
-    <!-- Menu Categories -->
-    <section class="categories">
-      <div class="container">
-        <div class="section-title">
-          <h2>Our Menu</h2>
-          <p>Discover our delicious selection of fast food favorites</p>
-        </div>
-        <div class="category-tabs">
-          <div class="category-tab active" data-category="all">All</div>
-          <div class="category-tab" data-category="burgers">Burgers</div>
-          <div class="category-tab" data-category="fries">Fries & Sides</div>
-          <div class="category-tab" data-category="drinks">Drinks</div>
-          <div class="category-tab" data-category="desserts">Desserts</div>
-        </div>
-        <div class="menu-items">
-          <!-- Burger Items -->
-          <div class="menu-item" data-category="burgers">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=699&q=80"
-                alt="Classic Cheeseburger"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Classic Cheeseburger</h3>
-                <span class="item-price">45DH</span>
-              </div>
-              <p class="item-description">
-                Juicy beef patty with melted cheese, fresh lettuce, tomato, and
-                our special sauce.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-item" data-category="burgers">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80"
-                alt="Bacon Deluxe"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Bacon Deluxe</h3>
-                <span class="item-price">$10.99</span>
-              </div>
-              <p class="item-description">
-                Double beef patty with crispy bacon, cheddar cheese, onion
-                rings, and BBQ sauce.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fries & Sides -->
-          <div class="menu-item" data-category="fries">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                alt="Crispy Fries"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Crispy Fries</h3>
-                <span class="item-price">$3.99</span>
-              </div>
-              <p class="item-description">
-                Golden crispy fries seasoned with our special blend of spices.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-item" data-category="fries">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1626700051175-6818013e1bd4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
-                alt="Onion Rings"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Onion Rings</h3>
-                <span class="item-price">$4.99</span>
-              </div>
-              <p class="item-description">
-                Crispy battered onion rings served with tangy dipping sauce.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Drinks -->
-          <div class="menu-item" data-category="drinks">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                alt="Cola"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Refreshing Cola</h3>
-                <span class="item-price">$2.49</span>
-              </div>
-              <p class="item-description">
-                Ice-cold cola to quench your thirst. Available in regular or
-                diet.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-item" data-category="drinks">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1167&q=80"
-                alt="Milkshake"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Creamy Milkshake</h3>
-                <span class="item-price">$4.99</span>
-              </div>
-              <p class="item-description">
-                Thick and creamy milkshake in chocolate, vanilla, or strawberry.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Desserts -->
-          <div class="menu-item" data-category="desserts">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                alt="Chocolate Sundae"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Chocolate Sundae</h3>
-                <span class="item-price">$5.99</span>
-              </div>
-              <p class="item-description">
-                Rich vanilla ice cream topped with hot fudge, whipped cream, and
-                a cherry.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-item" data-category="desserts">
-            <div class="item-image">
-              <img
-                src="https://images.unsplash.com/photo-1623334044303-241021148842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                alt="Apple Pie"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-header">
-                <h3 class="item-title">Apple Pie</h3>
-                <span class="item-price">$3.99</span>
-              </div>
-              <p class="item-description">
-                Warm apple pie with a flaky crust, served with a scoop of
-                vanilla ice cream.
-              </p>
-              <div class="item-footer">
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Menu Section -->
+    <section class="menu-section container" id="burgers">
+      <div class="section-title">
+        <h2>Our Menu</h2>
       </div>
-    </section>
 
-    <!-- Shopping Cart -->
-    <div class="cart-modal" id="cart-modal">
-      <div class="cart-header">
-        <h3 class="cart-title">Your Order</h3>
-        <button class="close-cart" id="close-cart">
-          <i class="fas fa-times"></i>
+      <div class="menu-categories">
+        <button class="category-btn active" data-category="all">
+          All Items
         </button>
+        <button class="category-btn" data-category="burgers">Burgers</button>
+        <button class="category-btn" data-category="sides">Sides</button>
+        <button class="category-btn" data-category="drinks">Drinks</button>
+        <button class="category-btn" data-category="desserts">Desserts</button>
       </div>
-      <div class="cart-items" id="cart-items">
-        <!-- Cart items will be added here dynamically -->
-        <div class="empty-cart-message" id="empty-cart-message">
-          <p>Your cart is empty</p>
+
+      <div class="menu-grid">
+        <!-- Burger Items -->
+        <div class="menu-item" data-category="burgers">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Classic Cheeseburger</h3>
+            <p>
+              Juicy beef patty with melted cheese, fresh lettuce, tomato, and
+              our special sauce.
+            </p>
+            <div class="item-price">$8.99</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burgers">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1368&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Bacon Deluxe</h3>
+            <p>
+              Double beef patty, crispy bacon, cheddar cheese, onion rings, and
+              BBQ sauce.
+            </p>
+            <div class="item-price">$12.99</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burgers">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Veggie Supreme</h3>
+            <p>
+              Plant-based patty with avocado, spinach, tomato, and garlic aioli.
+            </p>
+            <div class="item-price">$9.99</div>
+          </div>
+        </div>
+
+        <!-- Sides Items -->
+        <div class="menu-item" data-category="sides">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1573080496219-bb080dd4f877?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Crispy French Fries</h3>
+            <p>
+              Golden, crispy fries seasoned with our special blend of spices.
+            </p>
+            <div class="item-price">$3.99</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="sides">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1626700051175-6818013e1bd4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Onion Rings</h3>
+            <p>Beer-battered onion rings served with ranch dipping sauce.</p>
+            <div class="item-price">$4.99</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="sides">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1606755456206-b25206cde27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Mozzarella Sticks</h3>
+            <p>Breaded mozzarella cheese sticks served with marinara sauce.</p>
+            <div class="item-price">$5.99</div>
+          </div>
+        </div>
+
+        <!-- Drinks Items -->
+        <div class="menu-item" data-category="drinks">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Classic Cola</h3>
+            <p>
+              Refreshing cola served ice cold. Available in regular or diet.
+            </p>
+            <div class="item-price">$2.49</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Strawberry Milkshake</h3>
+            <p>
+              Creamy milkshake made with real strawberries and vanilla ice
+              cream.
+            </p>
+            <div class="item-price">$4.99</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1437418747212-8d9709afab22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Iced Coffee</h3>
+            <p>
+              Freshly brewed coffee served over ice with your choice of milk.
+            </p>
+            <div class="item-price">$3.49</div>
+          </div>
+        </div>
+
+        <!-- Desserts Items -->
+        <div class="menu-item" data-category="desserts">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Chocolate Brownie</h3>
+            <p>Rich, fudgy chocolate brownie topped with chocolate sauce.</p>
+            <div class="item-price">$4.99</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="desserts">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Apple Pie</h3>
+            <p>
+              Warm apple pie with cinnamon and a flaky crust, served with
+              vanilla ice cream.
+            </p>
+            <div class="item-price">$5.99</div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="desserts">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Apple Pie</h3>
+            <p>
+              Warm apple pie with cinnamon and a flaky crust, served with
+              vanilla ice cream.
+            </p>
+            <div class="item-price">$5.99</div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="desserts">
+          <div
+            class="item-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1327&q=80');
+            "
+          ></div>
+          <div class="item-content">
+            <h3>Ice Cream Sundae</h3>
+            <p>
+              Vanilla ice cream topped with hot fudge, caramel, nuts, and a
+              cherry.
+            </p>
+            <div class="item-price">$6.99</div>
+          </div>
         </div>
       </div>
-      <div class="cart-total">
-        <span>Total:</span>
-        <span id="cart-total-price">$0.00</span>
-      </div>
-      <button class="checkout-btn">Checkout</button>
-    </div>
-
-    <div class="overlay" id="overlay"></div>
+    </section>
 
     <!-- Footer -->
     <footer>
       <div class="container">
         <div class="footer-content">
-          <div class="footer-column">
-            <h3>Burger Express</h3>
+          <div class="footer-section">
+            <h3>About Us</h3>
             <p>
-              Serving delicious fast food since 2010. We're committed to
-              providing the best quality food with the fastest service.
+              Burger Haven has been serving delicious fast food since 2005.
+              We're committed to using fresh ingredients and providing excellent
+              service.
             </p>
-            <div class="social-icons">
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Food Street, Cityville
+            </p>
+            <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@burgerhaven.com</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Opening Hours</h3>
+            <p>Monday - Friday: 10am - 10pm</p>
+            <p>Saturday - Sunday: 9am - 11pm</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
               <a href="#"><i class="fab fa-facebook-f"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
               <a href="#"><i class="fab fa-instagram"></i></a>
               <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
           </div>
-          <div class="footer-column">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Menu</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Careers</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Contact Info</h3>
-            <ul class="footer-links">
-              <li>
-                <i class="fas fa-map-marker-alt"></i> 123 Food Street, Cityville
-              </li>
-              <li><i class="fas fa-phone"></i> (555) 123-4567</li>
-              <li><i class="fas fa-envelope"></i> info@burgerexpress.com</li>
-              <li><i class="fas fa-clock"></i> Mon-Sun: 9AM - 11PM</li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Newsletter</h3>
-            <p>Subscribe to our newsletter for special offers and updates.</p>
-            <form>
-              <input
-                type="email"
-                placeholder="Your email"
-                style="
-                  width: 100%;
-                  padding: 10px;
-                  margin: 10px 0;
-                  border-radius: 4px;
-                  border: none;
-                "
-              />
-              <button type="submit" class="btn" style="width: 100%">
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
+
         <div class="copyright">
-          <p>&copy; 2023 Burger Express. All rights reserved.</p>
+          <p>&copy; 2023 Burger Haven. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
     <script>
-      // Category filtering
+      // Category Filtering
       document.addEventListener("DOMContentLoaded", function () {
-        const categoryTabs = document.querySelectorAll(".category-tab");
+        const categoryButtons = document.querySelectorAll(".category-btn");
         const menuItems = document.querySelectorAll(".menu-item");
 
-        categoryTabs.forEach((tab) => {
-          tab.addEventListener("click", function () {
-            // Remove active class from all tabs
-            categoryTabs.forEach((t) => t.classList.remove("active"));
-            // Add active class to clicked tab
+        categoryButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active class from all buttons
+            categoryButtons.forEach((btn) => btn.classList.remove("active"));
+
+            // Add active class to clicked button
             this.classList.add("active");
 
             const category = this.getAttribute("data-category");
@@ -966,138 +348,23 @@
           });
         });
 
-        // Shopping cart functionality
-        const cartIcon = document.getElementById("cart-icon");
-        const cartModal = document.getElementById("cart-modal");
-        const closeCart = document.getElementById("close-cart");
-        const overlay = document.getElementById("overlay");
-        const addToCartButtons = document.querySelectorAll(".add-to-cart");
-        const cartItemsContainer = document.getElementById("cart-items");
-        const cartTotalPrice = document.getElementById("cart-total-price");
-        const emptyCartMessage = document.getElementById("empty-cart-message");
+        // Smooth scrolling for navigation links
+        document.querySelectorAll("nav a").forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
 
-        let cart = [];
-
-        // Open cart
-        cartIcon.addEventListener("click", function () {
-          cartModal.classList.add("active");
-          overlay.classList.add("active");
-        });
-
-        // Close cart
-        closeCart.addEventListener("click", function () {
-          cartModal.classList.remove("active");
-          overlay.classList.remove("active");
-        });
-
-        // Close cart when clicking overlay
-        overlay.addEventListener("click", function () {
-          cartModal.classList.remove("active");
-          overlay.classList.remove("active");
-        });
-
-        // Add to cart
-        addToCartButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const menuItem = this.closest(".menu-item");
-            const itemName = menuItem.querySelector(".item-title").textContent;
-            const itemPrice = parseFloat(
-              menuItem.querySelector(".item-price").textContent.replace("$", "")
-            );
-            const itemImage = menuItem.querySelector(".item-image img").src;
-
-            // Check if item already exists in cart
-            const existingItem = cart.find((item) => item.name === itemName);
-
-            if (existingItem) {
-              existingItem.quantity += 1;
-            } else {
-              cart.push({
-                name: itemName,
-                price: itemPrice,
-                image: itemImage,
-                quantity: 1,
-              });
+            const targetId = this.getAttribute("href");
+            if (targetId.startsWith("#")) {
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                window.scrollTo({
+                  top: targetElement.offsetTop - 80,
+                  behavior: "smooth",
+                });
+              }
             }
-
-            updateCart();
-
-            // Show cart modal when adding an item
-            cartModal.classList.add("active");
-            overlay.classList.add("active");
           });
         });
-
-        // Update cart display
-        function updateCart() {
-          // Clear cart items container
-          cartItemsContainer.innerHTML = "";
-
-          if (cart.length === 0) {
-            cartItemsContainer.appendChild(emptyCartMessage);
-            emptyCartMessage.style.display = "block";
-          } else {
-            emptyCartMessage.style.display = "none";
-
-            let total = 0;
-
-            cart.forEach((item, index) => {
-              total += item.price * item.quantity;
-
-              const cartItemElement = document.createElement("div");
-              cartItemElement.className = "cart-item";
-              cartItemElement.innerHTML = `
-                            <div class="cart-item-image">
-                                <img src="${item.image}" alt="${item.name}">
-                            </div>
-                            <div class="cart-item-details">
-                                <div class="cart-item-name">${item.name}</div>
-                                <div class="cart-item-price">$${item.price.toFixed(
-                                  2
-                                )}</div>
-                                <div class="cart-item-quantity">
-                                    <button class="quantity-btn decrease" data-index="${index}">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <span>${item.quantity}</span>
-                                    <button class="quantity-btn increase" data-index="${index}">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        `;
-
-              cartItemsContainer.appendChild(cartItemElement);
-            });
-
-            // Add event listeners to quantity buttons
-            document
-              .querySelectorAll(".quantity-btn.decrease")
-              .forEach((button) => {
-                button.addEventListener("click", function () {
-                  const index = parseInt(this.getAttribute("data-index"));
-                  if (cart[index].quantity > 1) {
-                    cart[index].quantity -= 1;
-                  } else {
-                    cart.splice(index, 1);
-                  }
-                  updateCart();
-                });
-              });
-
-            document
-              .querySelectorAll(".quantity-btn.increase")
-              .forEach((button) => {
-                button.addEventListener("click", function () {
-                  const index = parseInt(this.getAttribute("data-index"));
-                  cart[index].quantity += 1;
-                  updateCart();
-                });
-              });
-
-            cartTotalPrice.textContent = `$${total.toFixed(2)}`;
-          }
-        }
       });
     </script>
   </body>
